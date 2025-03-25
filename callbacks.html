@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Callback and API Fetch</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-green-300 text-white flex items-center justify-center min-h-screen p-4">
+
+    <div class="bg-blue-300 p-6 rounded-lg shadow-lg w-full max-w-lg text-center">
+        <h2 class="text-2xl font-bold mb-4">Callback and API Fetch Example</h2>
+        <button id="fetchDataBtn" class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded">
+            Fetch Data
+        </button>
+        <div id="output" class="mt-4 text-lg text-white">Click the button to fetch posts...</div>
+    </div>
+
+    <script>
+        function delayedExecution(callback) {
+            setTimeout(callback, 5000); // Simulate a delay of 5 seconds
+        }
+
+        function fetchData() {
+            document.getElementById("output").innerHTML = "Waiting for 5 seconds...";
+            delayedExecution(() => {
+                document.getElementById("output").innerHTML = "Fetching data...";
+
+                fetch("https://dummyjson.com/posts")
+                    .then(response => response.json())
+                    .then(data => {
+                        let posts = data.posts.map(post => `<li class="py-1">${post.title}</li>`).join("");
+                        document.getElementById("output").innerHTML = `
+                            <h3 class="text-xl font-semibold mb-2">Posts:</h3>
+                            <ul class="text-left list-disc list-inside">${posts}</ul>`;
+                    })
+                    .catch(error => {
+                        document.getElementById("output").innerHTML = "Error fetching data!";
+                        console.error("Fetch error:", error);
+                    });
+            });
+        }
+
+        document.getElementById("fetchDataBtn").addEventListener("click", fetchData);
+    </script>
+
+</body>
+</html>

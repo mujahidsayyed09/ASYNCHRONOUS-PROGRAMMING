@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promises Example</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="flex justify-center items-center h-screen bg-blue-300">
+
+    <div class="w-96 bg-green-300 shadow-lg rounded-lg p-6 text-center">
+        <h2 class="text-2xl font-bold text-gray-700 mb-4">Promise with API Fetch</h2>
+        <button id="fetchBtn" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
+            Fetch Posts
+        </button>
+        <div id="output" class="mt-4 text-gray-700"></div>
+    </div>
+
+    <script>
+        document.getElementById("fetchBtn").addEventListener("click", () => {
+            const output = document.getElementById("output");
+            output.innerHTML = "<p class='text-gray-500'>Loading...</p>";
+
+            // Functon to fetch data with a timeout
+            function fetchDataWithTimeout(url, timeout = 5000) {
+                return new Promise((resolve, reject) => {
+                    const timer = setTimeout(() => {
+                        reject("Operation timed out.");
+                    }, timeout);
+
+                    fetch(url)
+                        .then(response => {
+                            clearTimeout(timer); // Clear timeout if fetch succeeds
+                            if (!response.ok) throw new Error("Network response was not ok");
+                            return response.json();
+                        })
+                        .then(data => resolve(data))
+                        .catch(error => reject(error.message));
+                });
+            }
+
+            fetchDataWithTimeout("https://dummyjson.com/posts")
+                .then(data => {
+                    output.innerHTML = data.posts.slice(0, 5) // Display first 5 posts
+                        .map(post => `<p class="text-gray-800 border-b py-2">${post.title}</p>`)
+                        .join("");
+                })
+                .catch(error => {
+                    output.innerHTML = `<p class="text-red-500">${error}</p>`;
+                });
+        });
+    </script>
+
+</body>
+</html>
