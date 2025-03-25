@@ -1,18 +1,17 @@
-📌 Asynchronous Programming Tasks
-This project demonstrates different approaches to asynchronous programming in JavaScript:
+# 📌 Asynchronous Programming Tasks  
 
-Callbacks
+This project demonstrates different approaches to **asynchronous programming** in JavaScript:  
+- **Callbacks**  
+- **Promises**  
+- **Async/Await**  
 
-Promises
+Each method is implemented in separate HTML files with JavaScript functionality.  
 
-Async/Await
+---
 
-Each method is implemented in separate HTML files with JavaScript functionality.
+## 📁 Project Structure  
 
-📁 Project Structure
-csharp
-Copy
-Edit
+```
 /async-programming
 │── callbacks.html
 │── promises.html
@@ -20,25 +19,40 @@ Edit
 │── styles.css
 │── script.js
 │── README.md
-🔹 Task Descriptions
-1️⃣ Callbacks (callbacks.html)
-✅ Button triggers a 5-second delay using a callback function
-✅ Fetches and displays data from JSONPlaceholder API after the delay
+```
 
-2️⃣ Promises (promises.html)
-✅ Uses a Promise to fetch data from JSONPlaceholder API
-✅ Displays "Loading..." while waiting for data
-✅ Handles errors (rejects if fetch takes longer than 5s)
+---
 
-3️⃣ Async/Await (async-await.html)
-✅ Uses async/await for cleaner asynchronous code
-✅ Displays "Loading..." while fetching data
-✅ Implements error handling for network issues
+## 🔹 Task Descriptions  
 
-🛠️ Technologies Used
-HTML
+### 1️⃣ Callbacks (callbacks.html)  
+✅ Button triggers a 5-second delay using a **callback function**  
+✅ Fetches and displays data from **JSONPlaceholder API** after the delay  
 
-CSS (Tailwind CSS)
+### 2️⃣ Promises (promises.html)  
+✅ Uses a **Promise** to fetch data from **JSONPlaceholder API**  
+✅ Displays `"Loading..."` while waiting for data  
+✅ Handles errors (rejects if fetch takes longer than 5s)  
 
-JavaScript (ES6+)
+### 3️⃣ Async/Await (async-await.html)  
+✅ Uses **async/await** for cleaner asynchronous code  
+✅ Displays `"Loading..."` while fetching data  
+✅ Implements error handling for network issues  
 
+---
+
+## 🛠️ Technologies Used  
+- HTML  
+- CSS (Tailwind CSS)  
+- JavaScript (ES6+)  
+
+---
+
+## 📌 How to Run the Project?  
+
+2️⃣ **Open the HTML files in a browser**  
+- `callbacks.html`  
+- `promises.html`  
+- `async-await.html`  
+
+---
